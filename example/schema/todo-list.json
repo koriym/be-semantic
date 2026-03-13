@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "todo-list",
+  "title": "TodoList",
+  "description": "Todo一覧。フェイクデータ50件の観察から導いたスキーマ。",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["todoId", "todoTitle", "isCompleted", "createdAt"],
+        "properties": {
+          "todoId": {
+            "type": "string",
+            "description": "ULID形式の識別子",
+            "minLength": 26,
+            "maxLength": 26
+          },
+          "todoTitle": {
+            "type": "string",
+            "description": "タスクのタイトル。観察された最大長は41文字。",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "isCompleted": {
+            "type": "boolean",
+            "description": "完了フラグ"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "作成日時（ISO 8601）"
+          }
+        }
+      }
+    }
+  },
+  "$comment": "一覧ではtodoMemoは含まない。詳細ビュー（todo-detail.json）で取得する。"
+}

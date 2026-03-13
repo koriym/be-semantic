@@ -1,0 +1,66 @@
+{
+  "$schema": "https://alps-io.github.io/schemas/alps.json",
+  "alps": {
+    "title": "Todo App",
+    "doc": {"value": "シンプルなTodoアプリのALPSプロファイル。タスクの作成・参照・完了・削除ができる。"},
+    "descriptor": [
+
+      {"id": "todoId", "title": "Todo ID", "def": "https://schema.org/identifier"},
+      {"id": "todoTitle", "title": "タイトル", "def": "https://schema.org/name"},
+      {"id": "todoMemo", "title": "メモ", "def": "https://schema.org/description"},
+      {"id": "isCompleted", "title": "完了フラグ", "def": "https://schema.org/Boolean"},
+      {"id": "createdAt", "title": "作成日時", "def": "https://schema.org/dateCreated"},
+      {"id": "filterStatus", "title": "フィルター状態", "doc": {"value": "all | active | completed"}},
+
+      {"id": "TodoList", "title": "Todo一覧", "descriptor": [
+        {"href": "#todoId"},
+        {"href": "#todoTitle"},
+        {"href": "#isCompleted"},
+        {"href": "#createdAt"},
+        {"href": "#goTodoDetail"},
+        {"href": "#doCreateTodo"},
+        {"href": "#goFilteredTodoList"}
+      ]},
+
+      {"id": "TodoDetail", "title": "Todo詳細", "descriptor": [
+        {"href": "#todoId"},
+        {"href": "#todoTitle"},
+        {"href": "#todoMemo"},
+        {"href": "#isCompleted"},
+        {"href": "#createdAt"},
+        {"href": "#doCompleteTodo"},
+        {"href": "#doDeleteTodo"},
+        {"href": "#goTodoList"}
+      ]},
+
+      {"id": "FilteredTodoList", "title": "フィルター済みTodo一覧", "descriptor": [
+        {"href": "#filterStatus"},
+        {"href": "#todoId"},
+        {"href": "#todoTitle"},
+        {"href": "#isCompleted"},
+        {"href": "#createdAt"},
+        {"href": "#goTodoDetail"},
+        {"href": "#doCreateTodo"},
+        {"href": "#goTodoList"}
+      ]},
+
+      {"id": "goTodoList", "type": "safe", "rt": "#TodoList", "title": "Todo一覧へ移動"},
+      {"id": "goTodoDetail", "type": "safe", "rt": "#TodoDetail", "title": "Todo詳細へ移動", "descriptor": [
+        {"href": "#todoId"}
+      ]},
+      {"id": "goFilteredTodoList", "type": "safe", "rt": "#FilteredTodoList", "title": "フィルター済み一覧へ移動", "doc": {"value": "filterStatusはall/active/completedのいずれか"}, "descriptor": [
+        {"href": "#filterStatus"}
+      ]},
+      {"id": "doCreateTodo", "type": "unsafe", "rt": "#TodoList", "title": "Todoを作成する", "descriptor": [
+        {"href": "#todoTitle"},
+        {"href": "#todoMemo"}
+      ]},
+      {"id": "doCompleteTodo", "type": "idempotent", "rt": "#TodoDetail", "title": "Todoを完了にする", "doc": {"value": "isCompletedをtrueに更新する。一度完了にすると元に戻す操作は提供しない"}, "descriptor": [
+        {"href": "#todoId"}
+      ]},
+      {"id": "doDeleteTodo", "type": "idempotent", "rt": "#TodoList", "title": "Todoを削除する", "doc": {"value": "完了・未完了を問わず物理削除する"}, "descriptor": [
+        {"href": "#todoId"}
+      ]}
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+# be-semantic
+
+> A domain-first design methodology for building applications from meaning, not from technical constraints. The workflow: Story → ALPS → Fake → Agreement → Schema → Be Implementation.
+
+## Core Concepts
+
+- Design starts from user intent (stories), not from technology (endpoints, tables)
+- ALPS defines application vocabulary and state transitions, independent of implementation
+- 50 realistic fake data entries reveal domain constraints through observation
+- Schemas record observed reality; they are not technical prescriptions
+- Be Framework implements the domain as states of being (Being/Final), not actions
+
+## Workflow
+
+The six steps in order:
+1. **Story** — Write user stories ("As a user, I want X, because Y"). The "because" is mandatory; it reveals domain intent.
+2. **ALPS** — Define application vocabulary (semantic descriptors) and state transitions (safe/unsafe/idempotent). Validate with `asd`.
+3. **Fake** — Generate 50+ realistic fake data entries using an AI model. Make them look like real user data, not test data.
+4. **Agreement** — Review fake data with stakeholders. Discover constraints through observation, not prescription.
+5. **Schema** — Write JSON Schema based on observations (`maxLength: 80` because the observed max was 41, not because VARCHAR defaults to 255).
+6. **Be** — Implement as Being (states) and Final (transitions) in Be Framework. Schema required fields become constructor arguments.
+
+## Key Principle
+
+> Constraints should be derived from observed reality, not prescribed from abstract rules.
+
+When helping users apply this methodology:
+- Always start with stories before any technical artifact
+- The "because" clause in stories is not optional
+- Fake data must feel realistic, not randomly generated
+- Schema maxLength/minLength values should be derived from fake data observations
+- ALPS descriptor IDs should be used as property names in schemas and Being classes for consistency
+
+## Documentation
+
+- [Tutorial (ja)](https://raw.githubusercontent.com/koriym/be-semantic/main/docs/ja/tutorial.md): Step-by-step guide from zero to working Be app, including tool installation
+- [Tutorial (en)](https://raw.githubusercontent.com/koriym/be-semantic/main/docs/en/tutorial.md): Step-by-step guide from zero to working Be app, including tool installation
+- [Concept (en)](https://raw.githubusercontent.com/koriym/be-semantic/main/docs/en/concept.md): Philosophy and motivation — why domain precedes pattern
+- [Concept (ja)](https://raw.githubusercontent.com/koriym/be-semantic/main/docs/ja/concept.md): Philosophy and motivation in Japanese
+- [Workflow (en)](https://raw.githubusercontent.com/koriym/be-semantic/main/docs/en/workflow.md): Detailed step-by-step guide with checkpoints
+- [Workflow (ja)](https://raw.githubusercontent.com/koriym/be-semantic/main/docs/ja/workflow.md): Detailed step-by-step guide in Japanese
+- [Insights (en)](https://raw.githubusercontent.com/koriym/be-semantic/main/docs/en/insights.md): Observations and reflections on the methodology
+- [Insights (ja)](https://raw.githubusercontent.com/koriym/be-semantic/main/docs/ja/insights.md): Observations and reflections in Japanese
+
+## Example Files
+
+- [Story example](https://raw.githubusercontent.com/koriym/be-semantic/main/example/story/main.md): Complete user stories for a Todo app
+- [ALPS example](https://raw.githubusercontent.com/koriym/be-semantic/main/example/alps/todo.json): Complete ALPS profile for a Todo app
+- [Fake data example](https://raw.githubusercontent.com/koriym/be-semantic/main/example/fake/data-50.json): 50 realistic fake Todo entries
+- [Schema: TodoList](https://raw.githubusercontent.com/koriym/be-semantic/main/example/schema/todo-list.json): JSON Schema derived from fake data observations
+- [Schema: TodoDetail](https://raw.githubusercontent.com/koriym/be-semantic/main/example/schema/todo-detail.json): JSON Schema with observation comments
+
+## Related Tools
+
+- [Be Framework](https://be-framework.github.io/): The ontological PHP framework ("Be, Don't Do")
+- [ALPS](https://alps.io/): Application-Level Profile Semantics specification
+- [app-state-diagram (asd)](https://www.app-state-diagram.com/): Visualize ALPS profiles as state diagrams. Install: `brew install alps-asd/asd/asd`
+- [Semantic-Ex Method](https://koriym.github.io/blog/2025/08/10/semantic-method-en): The original article describing the fake-data observation technique

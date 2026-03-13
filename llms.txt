@@ -56,3 +56,8 @@ When helping users apply this methodology:
 - [ALPS](https://alps.io/): Application-Level Profile Semantics specification
 - [app-state-diagram (asd)](https://www.app-state-diagram.com/): Visualize ALPS profiles as state diagrams. Install: `brew install alps-asd/asd/asd`
 - [Semantic-Ex Method](https://koriym.github.io/blog/2025/08/10/semantic-method-en): The original article describing the fake-data observation technique
+
+## Optional
+
+- [Be Framework full docs](https://be-framework.github.io/llms-full.txt): Complete Be Framework documentation for LLMs — Being, Final, Metamorphosis, Diamond Pattern, and all concepts
+- [app-state-diagram full docs](https://www.app-state-diagram.com/llms-full.txt): Complete ALPS and app-state-diagram documentation for LLMs — profile format, descriptors, state transitions, and asd CLI usage

@@ -56,6 +56,7 @@ Explore the `example/` directory — a complete Todo app built with this workflo
 
 ## Documentation
 
+- [**Tutorial**](docs/en/tutorial.md) — Build a Be app from scratch (start here)
 - [Concept](docs/en/concept.md) — Philosophy and motivation
 - [Workflow](docs/en/workflow.md) — Step-by-step guide
 - [Insights](docs/en/insights.md) — Observations and reflections

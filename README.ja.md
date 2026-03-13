@@ -56,6 +56,7 @@ cd be-semantic
 
 ## ドキュメント
 
+- [**チュートリアル**](docs/ja/tutorial.md) — ゼロからBeアプリを作る（ここから始める）
 - [コンセプト](docs/ja/concept.md) — 哲学と動機
 - [ワークフロー](docs/ja/workflow.md) — ステップバイステップガイド
 - [考察](docs/ja/insights.md) — 観察と振り返り
